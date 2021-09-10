@@ -26,8 +26,14 @@ public class MelhorDeTres {
 		
 		System.out.println();
 		
-		if (numeroPartidas < 3 || numeroPartidas > 3 && numeroPartidas % 2 == 0) {
-			System.out.println("Opção Inválida");
+		while (true) {
+		
+			if ( numeroPartidas < 3 || numeroPartidas % 2 == 0) {
+				System.out.print("Opção Inválida. Escolha novamente: ");
+				numeroPartidas = leitor.nextInt();
+			} else {
+				break;
+			}
 		}
 		
 		System.out.println("---------------------------");
@@ -72,8 +78,10 @@ public class MelhorDeTres {
 					System.out.println("Empate!");
 				} else if (valorComputador == papel) {
 					System.out.println("O computador venceu!");
+					pontosPc += 1;
 				} else {
 					System.out.println("Você venceu!");
+					pontosJogador += 1;
 				}
 					
 			} else if (valorJogador == papel) {
@@ -81,24 +89,116 @@ public class MelhorDeTres {
 					System.out.println("Empate!");
 				} else if (valorComputador == pedra) {
 					System.out.println("Você venceu!");
+					pontosJogador += 1;
 				} else {
 					System.out.println("O computador venceu!");
+					pontosPc += 1;
 				}
 			} else {
 				if (valorComputador == tesoura) {
 					System.out.println("Empate!");
 				} else if (valorComputador == pedra) {
 					System.out.println("O computador venceu!");
+					pontosPc += 1;
 				} else {
 					System.out.println("Você venceu!");
+					pontosJogador += 1;
 				}
 			}
 			
 			System.out.println();
 			
+			valorComputador = sorteio.nextInt(3) + 1;
+			
+			double melhorDe = (numeroPartidas / 2) + 1;
+			
+			if (melhorDe == pontosPc) {
+				break;
+			}
+			
+			if (melhorDe == pontosJogador) {
+				break;
+			} 
+			
 			cont++;
 		}	
 		
+		while (pontosJogador == pontosPc) {
+			
+			System.out.println("PARTIDA DE OURO");
+			System.out.println();
+			
+			
+			System.out.print("Qual a sua opção (1, 2 ou 3)? ");
+			valorJogador = leitor.nextInt();
+			
+			String escolhaJogador, escolhaComputador;
+			
+			if (valorJogador == pedra) {
+				escolhaJogador = "Pedra"; 
+			} else if (valorJogador == papel) {
+				escolhaJogador = "Papel";
+			} else {
+				escolhaJogador = "Tesoura";
+			}
+			
+			if (valorComputador == pedra) {
+				escolhaComputador = "Pedra";
+			} else if (valorComputador == papel) {
+				escolhaComputador = "Papel";
+			} else {
+				escolhaComputador = "Tesoura";
+			}
+			
+			System.out.println();
+			System.out.println("Você escolheu: " + escolhaJogador);
+			System.out.println("Computador escolheu: " + escolhaComputador);
+			System.out.println();
+			
+			if (valorJogador == pedra) {
+				if (valorComputador == pedra) {
+					System.out.println("Empate!");
+				} else if (valorComputador == papel) {
+					System.out.println("O computador venceu!");
+					pontosPc += 1;
+				} else {
+					System.out.println("Você venceu!");
+					pontosJogador += 1;
+				}
+					
+			} else if (valorJogador == papel) {
+				if (valorComputador == papel) {
+					System.out.println("Empate!");
+				} else if (valorComputador == pedra) {
+					System.out.println("Você venceu!");
+					pontosJogador += 1;
+				} else {
+					System.out.println("O computador venceu!");
+					pontosPc += 1;
+				}
+			} else {
+				if (valorComputador == tesoura) {
+					System.out.println("Empate!");
+				} else if (valorComputador == pedra) {
+					System.out.println("O computador venceu!");
+					pontosPc += 1;
+				} else {
+					System.out.println("Você venceu!");
+					pontosJogador += 1;
+				}
+			}
+		}
+		
+		System.out.println();
+		
+		if (pontosJogador > pontosPc) {
+			System.out.println("VOCÊ VENCEU DESAFIO POR " + pontosJogador + " X " + pontosPc);
+		} 
+		
+		if (pontosPc > pontosJogador) {
+			System.out.println("COMPUTADOR VENCEU O DESAFIO POR " + pontosPc + " X " + pontosJogador);
+			
+		}
 		
 	}
 		
